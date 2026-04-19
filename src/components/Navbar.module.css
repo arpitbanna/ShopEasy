@@ -1,0 +1,12 @@
+.nav {
+    display : flex;
+    justify-content : space-between;
+    padding : 15px;
+    background : #131921;
+    color : white;
+}
+
+.search {
+    width : 40%;
+    padding : 8px
+}
