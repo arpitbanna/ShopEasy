@@ -32,7 +32,7 @@ const products = [
   {
     id: 6,
     title: "Mi Smart LED TV 43 inch",
-    price: 24999,
+    price: 10,
     image: "https://m.media-amazon.com/images/I/71vZ3ZC0o0L._SX679_.jpg"
   },
   {
