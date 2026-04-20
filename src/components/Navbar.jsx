@@ -3,11 +3,13 @@ import style from './Navbar.module.css'
 
 const Navbar = () => {
   return (
-    <div className={style.nav}>
-      <h2>Amazon Clone</h2>
-      <input placeholder="Search..." className={style.search} />
-      <div>Cart 🛒</div>
-    </div>
+    <header className={style.nav}>
+      <h2 className={style.brand}>Amazon Clone</h2>
+      <div className={style.searchWrap}>
+        <input placeholder="Search products" className={style.search} />
+      </div>
+      <button className={style.cartBtn} type="button">Cart (0)</button>
+    </header>
   );
 };
 
