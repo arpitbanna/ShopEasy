@@ -19,7 +19,7 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
                   src={item.image} 
                   alt={item.title} 
                   className={styles.itemImage} 
-                  onError={(e) => { e.target.src = "https://via.placeholder.com/120?text=No+Image" }}
+                  onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/120x120/e2e8f0/1e293b?text=No+Image"; }}
                 />
                 <div className={styles.itemDetails}>
                   <h4 className={styles.itemTitle}>{item.title}</h4>

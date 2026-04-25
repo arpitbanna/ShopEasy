@@ -15,7 +15,7 @@ const ProductCard = ({ product, addToCart }) => {
           src={product.image} 
           alt={product.title} 
           className={style.image} 
-          onError={(e) => { e.target.src = "https://via.placeholder.com/200?text=No+Image" }}
+          onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/200x200/e2e8f0/1e293b?text=No+Image"; }}
         />
       </div>
       <h4 className={style.title}>
