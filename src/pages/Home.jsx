@@ -1,20 +1,28 @@
 import React, { useState } from "react";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import QuickViewModal from "../components/QuickViewModal";
 import { useProducts } from "../hooks/useProducts";
 import { CATEGORIES, DEFAULT_CATEGORY } from "../constants/categories";
 import styles from './Home.module.css';
 
-const Home = ({ searchQuery }) => {
-  const [activeCategory, setActiveCategory] = useState(DEFAULT_CATEGORY);
+const Home = () => {
+  const { categoryId } = useParams();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState(null);
   
+  const searchQuery = searchParams.get('q') || "";
+  // If we are on a search specifically or base route without category, fallback to default.
+  const activeCategory = categoryId || DEFAULT_CATEGORY;
+
   // Use custom hook for data fetching
   const { products, loading, error } = useProducts(activeCategory);
 
   // Filter products by search query
   const filteredProducts = products.filter(p => 
-    p.title.toLowerCase().includes((searchQuery || "").toLowerCase())
+    p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    (p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
   return (
@@ -25,12 +33,19 @@ const Home = ({ searchQuery }) => {
           <button 
             key={cat.value} 
             className={`${styles.catBtn} ${activeCategory === cat.value ? styles.activeCat : ""}`}
-            onClick={() => setActiveCategory(cat.value)}
+            onClick={() => navigate(`/category/${cat.value}`)}
           >
             {cat.label}
           </button>
         ))}
       </div>
+
+      {/* Show search term header if search query exists */}
+      {searchQuery && (
+        <h2 style={{ textAlign: 'center', margin: '20px 0', fontFamily: 'system-ui, sans-serif' }}>
+          Search results for "{searchQuery}"
+        </h2>
+      )}
 
       {/* Error Handling */}
       {error && (
