@@ -11,4 +11,4 @@ export const CATEGORIES = [
   { label: "kids footwear", value: "kidsfootwear" }
 ];
 
-export const DEFAULT_CATEGORY = "womenswear";
+export const DEFAULT_CATEGORY = "mobiles";
