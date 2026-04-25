@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { CartProvider } from "./context/CartContext";
@@ -12,15 +12,16 @@ import PrivateRoute from "./components/PrivateRoute";
 import Footer from "./components/Footer";
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
   return (
     <AuthProvider>
       <CartProvider>
         <Toaster position="bottom-right" reverseOrder={false} />
-        <Navbar onSearch={setSearchQuery} />
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Home searchQuery={searchQuery} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:categoryId" element={<Home />} />
+          <Route path="/search" element={<Home />} />
+          
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route 

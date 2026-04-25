@@ -1,179 +1,162 @@
+/* --- Header & Layout --- */
 .header {
   width: 100%;
   display: flex;
   flex-direction: column;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #131921;
 }
 
-/* --- Top Navbar --- */
+/* --- Main Navbar --- */
 .navMain {
   background-color: #131921;
   color: white;
   display: flex;
   align-items: center;
-  padding: 5px 10px;
-  height: 60px;
-  gap: 10px;
-  font-family: Arial, sans-serif;
+  justify-content: space-between;
+  padding: 10px 20px;
+  min-height: 60px;
+  gap: 20px;
 }
 
-.navItem {
+/* --- Left: Logo --- */
+.logoContainer {
   display: flex;
   align-items: center;
-  padding: 5px 8px;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  cursor: pointer;
   text-decoration: none;
   color: white;
 }
 
-.navItem:hover {
-  border: 1px solid white;
-}
-
-/* Logo */
-.logoContainer {
-  display: flex;
-  align-items: flex-start;
-  padding-top: 10px;
-}
-
-.logo {
-  width: 90px;
-  object-fit: contain;
-  margin-top: 5px;
-}
-
-.logoExtension {
-  font-size: 14px;
-  margin-left: 2px;
-  margin-top: 2px;
-}
-
-/* Location */
-.locationContainer {
-  display: flex;
-  align-items: center;
-}
-
-.locationIcon {
-  margin-right: 2px;
-  margin-top: 10px;
-}
-
-.locationText {
-  display: flex;
-  flex-direction: column;
-}
-
-.locationLine1 {
-  font-size: 12px;
-  color: #ccc;
-}
-
-.locationLine2 {
-  font-size: 14px;
+.logoText {
+  font-size: 24px;
   font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
-/* Search Bar */
+/* --- Center: Search Bar --- */
 .searchContainer {
   display: flex;
   flex: 1;
+  max-width: 800px;
   height: 40px;
   border-radius: 4px;
   overflow: hidden;
-  margin: 0 10px;
+  background: white;
 }
 
 .searchContainer:focus-within {
-  box-shadow: 0 0 0 2px #f90, 0 0 0 3px rgba(255, 153, 0, 0.5);
-}
-
-.searchSelect {
-  background-color: #f3f3f3;
-  border: none;
-  border-right: 1px solid #ccc;
-  padding: 0 10px;
-  color: #555;
-  font-size: 12px;
-  cursor: pointer;
-  outline: none;
-}
-
-.searchSelect:hover {
-  background-color: #dadada;
+  box-shadow: 0 0 0 2px #f90;
 }
 
 .searchInput {
   flex: 1;
   border: none;
-  padding: 0 10px;
-  font-size: 15px;
+  padding: 0 15px;
+  font-size: 16px;
   outline: none;
-  color: black;
+  color: #333;
 }
 
 .searchBtn {
   background-color: #febd69;
   border: none;
-  width: 45px;
+  width: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .searchBtn:hover {
   background-color: #f3a847;
 }
 
-/* Language */
-.languageContainer {
+/* --- Right: Controls --- */
+.rightControls {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-weight: bold;
-  font-size: 14px;
+  gap: 20px;
 }
 
-.flag {
-  width: 20px;
-  height: 14px;
+/* Auth */
+.authContainer {
+  display: flex;
+  align-items: center;
 }
 
-.arrow {
-  font-size: 10px;
-  color: #a7acb2;
-  margin-left: 2px;
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-/* Account & Returns */
-.accountContainer, .ordersContainer {
+.userInfo {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.line1 {
+.helloText {
   font-size: 12px;
+  color: #ccc;
+  line-height: 1;
 }
 
-.line2 {
+.emailText {
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.loginBtn {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: 1px solid white;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.loginBtn:hover {
+  background-color: white;
+  color: #131921;
 }
 
 /* Cart */
 .cartContainer {
   display: flex;
   align-items: flex-end;
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.cartContainer:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .cartIconWrapper {
@@ -184,59 +167,89 @@
 
 .cartCount {
   position: absolute;
-  top: -5px;
-  left: 14px;
-  color: #f08804;
+  top: -8px;
+  left: 12px;
+  background-color: #f08804;
+  color: #131921;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  min-width: 20px;
+  text-align: center;
 }
 
 .cartText {
   font-size: 14px;
   font-weight: bold;
+  margin-left: 10px;
   margin-bottom: 2px;
 }
 
-
-/* --- Bottom Navbar --- */
+/* --- Bottom Navbar for Categories --- */
 .navSub {
   background-color: #232f3e;
-  color: white;
   display: flex;
   align-items: center;
-  padding: 5px 15px;
-  gap: 5px;
-  font-family: Arial, sans-serif;
+  padding: 8px 20px;
+  gap: 15px;
   overflow-x: auto;
   white-space: nowrap;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.subItem {
-  display: flex;
-  align-items: center;
-  padding: 5px 8px;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-  font-size: 14px;
-}
-
-.subItem:hover {
-  border: 1px solid white;
-}
-
-.menuAll {
-  font-weight: bold;
-  gap: 5px;
-}
-
-/* Scrollbar hide for bottom nav */
 .navSub::-webkit-scrollbar {
   display: none;
 }
-.navSub {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+.subItem {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.subItem:hover {
+  opacity: 1;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .navMain {
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .searchContainer {
+    order: 3;
+    min-width: 100%;
+    margin: 5px 0;
+  }
+  
+  .logoText {
+    font-size: 20px;
+  }
+  
+  .rightControls {
+    gap: 15px;
+  }
+  
+  .cartText {
+    display: none;
+  }
+  
+  .cartCount {
+    min-width: 18px;
+    padding: 2px 4px;
+    font-size: 12px;
+  }
 }
