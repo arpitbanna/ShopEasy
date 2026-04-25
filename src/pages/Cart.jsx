@@ -10,7 +10,7 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
       <div className={styles.cartLeft}>
         <h2>Shopping Cart</h2>
         {cart.length === 0 ? (
-          <p className={styles.emptyCart}>Your Amazon Cart is empty.</p>
+          <p className={styles.emptyCart}>Your ShopEasy Cart is empty.</p>
         ) : (
           <div className={styles.cartList}>
             {cart.map(item => (

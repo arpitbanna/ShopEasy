@@ -22,9 +22,9 @@ const Footer = () => {
         </div>
         <div className={styles.footerSection}>
           <h3>Make Money with Us</h3>
-          <p>Sell on Amazon</p>
+          <p>Sell on ShopEasy</p>
           <p>Protect and Build Your Brand</p>
-          <p>Amazon Global Selling</p>
+          <p>ShopEasy Global Selling</p>
         </div>
         <div className={styles.footerSection}>
           <h3>Let Us Help You</h3>
@@ -35,11 +35,11 @@ const Footer = () => {
       </div>
       <div className={styles.footerBottom}>
         <img 
-          src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" 
-          alt="Amazon Logo" 
+          src="https://placehold.co/100x30/131921/FFFFFF?text=ShopEasy" 
+          alt="ShopEasy Logo" 
           className={styles.logo} 
         />
-        <p>© 2026, Amazon Clone. Built for college project.</p>
+        <p>© 2026, ShopEasy Clone. Built for college project.</p>
       </div>
     </footer>
   );

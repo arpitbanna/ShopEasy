@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 const App = () => {
   // Load cart from localStorage or start empty
   const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem('amazonCart');
+    const savedCart = localStorage.getItem('shopEasyCart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
@@ -16,7 +16,7 @@ const App = () => {
 
   // Save to localStorage when cart changes
   useEffect(() => {
-    localStorage.setItem('amazonCart', JSON.stringify(cart));
+    localStorage.setItem('shopEasyCart', JSON.stringify(cart));
   }, [cart]);
 
   // Core logic: Add to cart

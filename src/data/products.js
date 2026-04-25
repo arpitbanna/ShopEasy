@@ -712,7 +712,7 @@ const products = [
     discount: 18,
     image: "https://m.media-amazon.com/images/I/81M11B5n7aL._SX679_.jpg",
     category: "Smart Home",
-    brand: "Amazon",
+    brand: "ShopEasy",
     sku: "AMZN-ECHO5-BLU",
     inStock: true,
     stockCount: 110,
@@ -722,7 +722,7 @@ const products = [
       "Our best-sounding Echo Dot yet. Enjoy an improved audio experience compared to previous Echo Dots with Alexa for clearer vocals, deeper bass and vibrant sound in any room.",
     tags: ["Smart Speaker", "Alexa", "Bluetooth", "Smart Home Control"],
     shopAddress: {
-      storeName: "Amazon Retail Kiosk",
+      storeName: "ShopEasy Retail Kiosk",
       street: "Select Citywalk, Saket",
       city: "New Delhi",
       state: "Delhi",
@@ -732,7 +732,7 @@ const products = [
       mapUrl: "https://maps.google.com/?q=Select+Citywalk+Saket",
     },
     seller: {
-      name: "Amazon Retail",
+      name: "ShopEasy Retail",
       rating: 4.7,
       totalSales: 500000,
     },
@@ -849,7 +849,7 @@ const products = [
     discount: 0,
     image: "https://m.media-amazon.com/images/I/711v-w0DbtL._SX679_.jpg",
     category: "Tablets",
-    brand: "Amazon",
+    brand: "ShopEasy",
     sku: "AMZN-KINDLE-PW-16GB",
     inStock: true,
     stockCount: 65,
@@ -859,7 +859,7 @@ const products = [
       "Now with a 6.8-inch display and thinner borders, adjustable warm light, up to 10 weeks of battery life, and 20% faster page turns. Purpose-built for reading with a flush-front design and glare-free display.",
     tags: ["E-reader", "16GB", "Waterproof", "Adjustable Warm Light"],
     shopAddress: {
-      storeName: "Amazon Retail Kiosk",
+      storeName: "ShopEasy Retail Kiosk",
       street: "Mantri Square Mall, Malleshwaram",
       city: "Bengaluru",
       state: "Karnataka",
@@ -869,7 +869,7 @@ const products = [
       mapUrl: "https://maps.google.com/?q=Mantri+Square+Bengaluru",
     },
     seller: {
-      name: "Amazon Retail",
+      name: "ShopEasy Retail",
       rating: 4.7,
       totalSales: 500000,
     },

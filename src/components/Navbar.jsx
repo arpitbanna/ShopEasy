@@ -8,8 +8,8 @@ const Navbar = ({ cartCount, onSearch }) => {
       <div className={style.navMain}>
         <Link to="/" className={`${style.navItem} ${style.logoContainer}`}>
           <img 
-            src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" 
-            alt="Amazon Logo" 
+            src="https://placehold.co/100x30/131921/FFFFFF?text=ShopEasy" 
+            alt="ShopEasy Logo" 
             className={style.logo} 
           />
           <span className={style.logoExtension}>.in</span>
@@ -33,7 +33,7 @@ const Navbar = ({ cartCount, onSearch }) => {
           <input 
             type="text" 
             className={style.searchInput} 
-            placeholder="Search Amazon.in" 
+            placeholder="Search ShopEasy.in" 
             onChange={(e) => onSearch && onSearch(e.target.value)}
           />
           <button className={style.searchBtn}>
@@ -78,7 +78,7 @@ const Navbar = ({ cartCount, onSearch }) => {
         <Link to="/" className={style.subItem}>Customer Service</Link>
         <Link to="/" className={style.subItem}>New Releases</Link>
         <Link to="/" className={style.subItem}>Prime</Link>
-        <Link to="/" className={style.subItem}>Amazon Pay</Link>
+        <Link to="/" className={style.subItem}>ShopEasy Pay</Link>
         <Link to="/" className={style.subItem}>Fashion</Link>
         <Link to="/" className={style.subItem}>Electronics</Link>
       </div>
