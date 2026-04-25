@@ -1,76 +1,88 @@
-# 🛍️ ShopEasy - Premium E-Commerce Experience
+# 🛍️ ShopEasy - Premium E-Commerce Platform
 
-ShopEasy is a modern, responsive e-commerce platform built with React, designed to provide a premium shopping experience with real-time data and a glassmorphic aesthetic.
+ShopEasy is a modern, responsive e-commerce application built with React and Vite. It features real-time data fetching from the RapidAPI Ecommerce Hub, a dynamic cart management system, and a sleek, glassmorphic UI designed for a premium shopping experience.
 
-![ShopEasy Home Page](file:///Users/aryan/.gemini/antigravity/brain/426e7754-4e9e-4206-9ac3-3159b42f1443/shopeasy_home_page_1777081328717.png)
+## 🚀 Features
 
-## ✨ Features
+- **Live API Integration**: Real-time product discovery across 10 categories including Mobiles, Laptops, and Fashion.
+- **Dynamic Cart Management**: Add, update, and remove items with real-time subtotal calculations.
+- **Quick View Modal**: Detailed product insights without leaving the main discovery page.
+- **Premium UI/UX**: Custom-built design system with glassmorphic elements, smooth Framer Motion animations, and responsive layouts.
+- **Search Functionality**: Filter products instantly across all categories.
+- **Global State**: Robust state management using React Context API.
 
-- **🚀 Live API Integration**: Fetches real-time product data from the RapidAPI Ecommerce Hub across 10+ categories (Mobiles, Laptops, Fashion, etc.).
-- **🛒 Dynamic Cart System**: 
-  - Global state management using React Context API.
-  - Inline quantity controls (`[- 1 +]`) directly on product cards.
-  - Persistent cart state with real-time total calculation.
-- **🔍 Quick View Modal**:
-  - Detailed product views with high-quality images and descriptions.
-  - Fully responsive and perfectly centered layout using Framer Motion.
-- **💎 Premium UI/UX**:
-  - **Glassmorphism Design**: Sleek, frosted-glass effects on cards and navigation.
-  - **Modern Typography**: Using 'Plus Jakarta Sans' for a premium feel.
-  - **Micro-animations**: Smooth hover effects and transitions powered by Framer Motion.
-- **📱 Fully Responsive**: Optimized for desktop, tablet, and mobile screens.
+## 🛠 Tech Stack
 
-## 🛠️ Tech Stack
-
-- **Core**: React 19, Vite
+- **Frontend**: React 19, Vite
 - **Styling**: Vanilla CSS (CSS Modules)
-- **State Management**: React Context API
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Notifications**: React Hot Toast
-- **Data Source**: RapidAPI (Ecommerce API)
+- **API**: RapidAPI (Ecommerce Hub)
+- **Deployment**: Vercel
 
-## 🚀 Getting Started
+## 📂 Folder Structure
 
-### Prerequisites
-- Node.js (v18+)
-- npm or yarn
+```text
+src/
+├── components/     # Reusable UI components (Navbar, ProductCard, Footer)
+├── pages/          # Main page views (Home, Cart)
+├── hooks/          # Custom React hooks (useProducts)
+├── services/       # API service layer (apiService.js)
+├── context/        # Global state management (CartContext)
+├── constants/      # App-wide constants (categories)
+├── utils/          # Utility functions (formatters)
+├── assets/         # Static assets and images
+└── App.jsx         # Root component and routing
+```
 
-### Installation
-1. Clone the repository:
+## ⚙️ Setup Instructions
+
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/arpitbanna/ShopEasy.git
    cd ShopEasy
    ```
-2. Install dependencies:
+
+2. **Install dependencies**:
    ```bash
    npm install
    ```
-3. Start the development server:
+
+3. **Configure Environment Variables**:
+   Create a `.env` file in the root directory and add your RapidAPI credentials:
+   ```env
+   VITE_RAPIDAPI_KEY=your_api_key_here
+   VITE_RAPIDAPI_HOST=ecommerce-api3.p.rapidapi.com
+   VITE_API_BASE_URL=https://ecommerce-api3.p.rapidapi.com
+   ```
+
+4. **Run in development mode**:
    ```bash
    npm run dev
    ```
 
-## 🔌 API Configuration
+5. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-The application uses the **Ecommerce API** via RapidAPI. 
+## 🌐 Deployment
 
-- **Host**: `ecommerce-api3.p.rapidapi.com`
-- **Endpoints Used**: `/mobiles`, `/laptops`, `/womenswear`, `/malefootwear`, etc.
+This project is optimized for deployment on **Vercel**. 
+- Simply connect your GitHub repository to Vercel.
+- Add the Environment Variables in the Vercel project settings.
+- The `vercel.json` file handles all client-side routing automatically.
 
-## 📂 Project Structure
+## 🔐 Environment Variables
 
-```text
-src/
-├── components/     # Reusable UI components (Navbar, ProductCard, QuickView)
-├── context/        # Global state (CartContext)
-├── pages/          # Main views (Home, Cart)
-├── data/           # Mock data and configuration
-└── App.jsx         # Main entry point and routing
-```
+The app requires the following environment variables:
+- `VITE_RAPIDAPI_KEY`: Your unique RapidAPI key.
+- `VITE_RAPIDAPI_HOST`: The host for the Ecommerce API.
+- `VITE_API_BASE_URL`: The base URL for API requests.
 
-## 📄 License
-This project is for demonstration purposes. Developed as a premium e-commerce template.
+## 👨‍💻 Authors
+
+- **Arpit Singh Pawar**
+- **Aryan**
 
 ---
-Built with ❤️ by Antigravity (Advanced AI Coding Assistant)
