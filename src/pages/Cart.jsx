@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingBag, Trash2, Plus, Minus } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { formatPrice } from '../utils/formatters';
 import styles from './Cart.module.css';
 
 const Cart = () => {
@@ -42,7 +43,7 @@ const Cart = () => {
                   />
                   <div className={styles.itemDetails}>
                     <h4 className={styles.itemTitle}>{item.title}</h4>
-                    <p className={styles.itemPrice}>₹{item.price.toLocaleString()}</p>
+                    <p className={styles.itemPrice}>{formatPrice(item.price)}</p>
                     <p className={styles.inStock}>In stock</p>
                     
                     <div className={styles.itemActions}>
@@ -77,7 +78,7 @@ const Cart = () => {
           <div className={styles.subtotalBox}>
             <p className={styles.subtotalText}>
               Subtotal ({cartCount} items): <br/>
-              <strong>₹{subtotal.toLocaleString()}</strong>
+              <strong>{formatPrice(subtotal)}</strong>
             </p>
             <button className={styles.checkoutBtn}>Proceed to Buy</button>
             <div className={styles.safetyInfo}>

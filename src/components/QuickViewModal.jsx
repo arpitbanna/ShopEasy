@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingCart, Star } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { formatPrice } from '../utils/formatters';
 import styles from './QuickViewModal.module.css';
 
 const QuickViewModal = ({ product, isOpen, onClose }) => {
@@ -56,10 +57,7 @@ const QuickViewModal = ({ product, isOpen, onClose }) => {
                 </div>
 
                 <div className={styles.priceRow}>
-                  <span className={styles.price}>₹{product.price.toLocaleString()}</span>
-                  {product.originalPrice && (
-                    <strike className={styles.originalPrice}>₹{product.originalPrice.toLocaleString()}</strike>
-                  )}
+                  <span className={styles.price}>{formatPrice(product.price)}</span>
                 </div>
 
                 <p className={styles.description}>

@@ -1,17 +1,20 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Plus, Minus, Eye } from 'lucide-react';
+import { Plus, Minus, Eye, Star } from 'lucide-react';
 import { useCart } from "../context/CartContext";
+import { formatPrice } from "../utils/formatters";
 import style from './ProductCard.module.css';
 
 const ProductCard = ({ product, onQuickView }) => {
   const { addToCart, getItemQuantity, updateQuantity } = useCart();
   const quantity = getItemQuantity(product.id);
 
-  // Simple stars
+  // Optimized Rating Display
   const renderStars = (rating) => {
-    const fullStars = Math.round(rating || 4);
-    return "⭐".repeat(fullStars) + "☆".repeat(5 - fullStars);
+    const fullStars = Math.floor(rating || 4);
+    return Array(5).fill(0).map((_, i) => (
+      <Star key={i} size={14} fill={i < fullStars ? "#fbbf24" : "none"} stroke={i < fullStars ? "#fbbf24" : "#cbd5e1"} />
+    ));
   };
 
   return (
@@ -41,17 +44,12 @@ const ProductCard = ({ product, onQuickView }) => {
       </h4>
       
       <div className={style.rating}>
-        <span>{renderStars(product.rating)}</span>
-        <span className={style.reviewCount}>{(product.totalReviews || 0).toLocaleString()}</span>
+        <div className={style.stars}>{renderStars(product.rating)}</div>
+        <span className={style.reviewCount}>({(product.totalReviews || 0).toLocaleString()})</span>
       </div>
 
       <div className={style.priceSection}>
-        <p className={style.price}>₹{product.price.toLocaleString()}</p>
-        {product.originalPrice && (
-          <p className={style.originalPrice}>
-            <strike>₹{product.originalPrice.toLocaleString()}</strike>
-          </p>
-        )}
+        <p className={style.price}>{formatPrice(product.price)}</p>
       </div>
       
       <div className={style.actionWrapper}>
