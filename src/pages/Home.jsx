@@ -1,30 +1,67 @@
-import React, { useState } from "react";
-import products from "../data/products";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
+import QuickViewModal from "../components/QuickViewModal";
 import styles from './Home.module.css';
 
-const Home = ({ searchQuery, addToCart }) => {
-  const [category, setCategory] = useState("All");
+const Home = ({ searchQuery }) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const categories = ["All", "Electronics", "Fashion", "Shoes"];
+  const categories = [
+    { label: "mobiles", value: "mobiles" },
+    { label: "laptops", value: "laptops" },
+    { label: "books", value: "books" },
+    { label: "menswear", value: "menswear" },
+    { label: "womenswear", value: "womenswear" },
+    { label: "kidswear", value: "kidswear" },
+    { label: "watches", value: "watches" },
+    { label: "male footwear", value: "malefootwear" },
+    { label: "female footwear", value: "femalefootwear" },
+    { label: "kids footwear", value: "kidsfootwear" }
+  ];
 
-  const filteredProducts = products.filter(p => {
-    // Search match
-    const matchesSearch = p.title.toLowerCase().includes((searchQuery || "").toLowerCase());
-    
-    // Category match
-    let matchesCategory = true;
-    if (category === "Electronics") {
-      const elecCats = ["Smartphones", "Laptops", "Televisions", "Cameras", "Monitors", "Tablets", "Gaming", "Smart Home", "Accessories", "Audio"];
-      matchesCategory = elecCats.includes(p.category);
-    } else if (category === "Fashion") {
-      matchesCategory = p.category === "Wearables";
-    } else if (category === "Shoes") {
-      matchesCategory = p.category === "Footwear";
-    }
+  const [category, setCategory] = useState(categories[4].value); // Default to womenswear
 
-    return matchesSearch && matchesCategory;
-  });
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`https://ecommerce-api3.p.rapidapi.com/${category}`, {
+          headers: {
+            'x-rapidapi-host': 'ecommerce-api3.p.rapidapi.com',
+            'x-rapidapi-key': 'b729ed1f63mshf67059eb2f42632p1b1e91jsn1cebb5f719ba'
+          }
+        });
+        const data = await response.json();
+        
+        // Map data to our format
+        const mappedData = data.map((item, index) => ({
+          id: `${category}-${index}`,
+          title: item.Brand ? `${item.Brand} ${item.Description}` : item.Description,
+          brand: item.Brand,
+          price: parseInt(item.Price?.replace(/[₹,]/g, '') || 0),
+          image: item.Image,
+          category: category,
+          description: item.Description,
+          rating: 4 + Math.random(), // Mock rating since API doesn't provide it
+          totalReviews: Math.floor(Math.random() * 5000)
+        }));
+
+        setProducts(mappedData);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, [category]);
+
+  const filteredProducts = products.filter(p => 
+    p.title.toLowerCase().includes((searchQuery || "").toLowerCase())
+  );
 
   return (
     <div className={styles.homeContainer}>
@@ -32,28 +69,43 @@ const Home = ({ searchQuery, addToCart }) => {
       <div className={styles.categoryFilter}>
         {categories.map(cat => (
           <button 
-            key={cat} 
-            className={`${styles.catBtn} ${category === cat ? styles.activeCat : ""}`}
-            onClick={() => setCategory(cat)}
+            key={cat.value} 
+            className={`${styles.catBtn} ${category === cat.value ? styles.activeCat : ""}`}
+            onClick={() => setCategory(cat.value)}
           >
-            {cat}
+            {cat.label}
           </button>
         ))}
       </div>
 
-      {/* Product Grid or Empty State */}
-      {filteredProducts.length === 0 ? (
+      {/* Loading State */}
+      {loading ? (
+        <div className={styles.loading}>
+          <div className={styles.spinner}></div>
+          <p>Fetching the latest {category}...</p>
+        </div>
+      ) : filteredProducts.length === 0 ? (
         <div className={styles.noProducts}>
           <h2>No products found</h2>
-          <p>Try checking your spelling or use more general terms.</p>
+          <p>Try checking your spelling or change the category.</p>
         </div>
       ) : (
         <div className={styles.container}>
           {filteredProducts.map((p) => (
-            <ProductCard key={p.id} product={p} addToCart={() => addToCart(p)} />
+            <ProductCard 
+              key={p.id} 
+              product={p} 
+              onQuickView={(prod) => setSelectedProduct(prod)} 
+            />
           ))}
         </div>
       )}
+
+      <QuickViewModal 
+        product={selectedProduct} 
+        isOpen={!!selectedProduct} 
+        onClose={() => setSelectedProduct(null)} 
+      />
     </div>
   );
 };
