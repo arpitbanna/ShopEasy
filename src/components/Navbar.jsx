@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Search, MapPin, ShoppingCart, Menu } from 'lucide-react';
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import style from './Navbar.module.css';
 
 const Navbar = ({ onSearch }) => {
   const { cartCount } = useCart();
+  const { user, logout } = useAuth();
   return (
     <header className={style.header}>
       <div className={style.navMain}>
@@ -51,8 +53,17 @@ const Navbar = ({ onSearch }) => {
         </div>
 
         <div className={`${style.navItem} ${style.accountContainer}`}>
-          <span className={style.line1}>Hello, sign in</span>
-          <span className={style.line2}>Account & Lists <span className={style.arrow}>▼</span></span>
+          {user ? (
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <span className={style.line1}>Hello, {user.email.split('@')[0]}</span>
+              <span className={style.line2} onClick={() => { if(window.confirm('Are you sure you want to logout?')) logout() }} style={{cursor: 'pointer'}}>Logout</span>
+            </div>
+          ) : (
+            <Link to="/login" style={{color: 'white', textDecoration: 'none', display: 'flex', flexDirection: 'column'}}>
+              <span className={style.line1}>Hello, sign in</span>
+              <span className={style.line2}>Account & Lists <span className={style.arrow}>▼</span></span>
+            </Link>
+          )}
         </div>
         <div className={`${style.navItem} ${style.ordersContainer}`}>
           <span className={style.line1}>Returns</span>
