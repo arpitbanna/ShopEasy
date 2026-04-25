@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import style from './Navbar.module.css';
 
-const Navbar = ({ cartCount, onSearch }) => {
+const Navbar = ({ onSearch }) => {
+  const { cartCount } = useCart();
   return (
     <header className={style.header}>
       <div className={style.navMain}>
