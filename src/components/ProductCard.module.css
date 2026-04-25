@@ -2,54 +2,87 @@
     border: 1px solid #e3e9f5;
     padding: 14px;
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(15, 33, 66, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(15, 33, 66, 0.05);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 28px rgba(15, 33, 66, 0.14);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 16px 28px rgba(15, 33, 66, 0.12);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fc;
+    border-radius: 8px;
+    margin-bottom: 12px;
 }
 
 .image {
-    width: 100%;
-    height: 220px;
+    max-width: 100%;
+    max-height: 200px;
     object-fit: contain;
-    border-radius: 12px;
-    background: linear-gradient(180deg, #f8fbff 0%, #f0f5ff 100%);
-    padding: 12px;
+    mix-blend-mode: multiply;
 }
 
 .title {
-    margin: 12px 0 8px;
-    font-size: 0.98rem;
+    margin: 0 0 8px;
+    font-size: 0.95rem;
     line-height: 1.4;
-    min-height: 2.8em;
-    color: #11223d;
+    color: #0f1111;
+    flex-grow: 1;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.reviewCount {
+    color: #007185;
 }
 
 .price {
     margin: 0;
-    font-weight: 700;
-    color: #af2e0f;
-    font-size: 1.03rem;
+    font-weight: 600;
+    color: #0f1111;
+    font-size: 1.2rem;
+}
+
+.originalPrice {
+    margin: 4px 0 0 0;
+    font-size: 0.75rem;
+    color: #565959;
 }
 
 .btn {
     width: 100%;
-    margin-top: 12px;
+    margin-top: 14px;
     padding: 10px;
-    background: linear-gradient(135deg, #ffd54d, #ffb300);
-    border: 0;
-    border-radius: 10px;
-    font-weight: 600;
-    color: #2a3449;
+    background: #ffd814;
+    border: none;
+    border-radius: 100px;
+    font-weight: 500;
+    color: #0f1111;
     cursor: pointer;
-    transition: filter 0.2s ease;
+    transition: background 0.2s ease, transform 0.1s;
 }
 
 .btn:hover {
-    filter: brightness(1.04);
+    background: #f7ca00;
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
